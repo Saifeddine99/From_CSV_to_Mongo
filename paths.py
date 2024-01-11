@@ -1,3 +1,4 @@
+# This function will be used when querying. In fact, it allows to assign to each variable the corresponding path (Based on our data structure)
 def parameter_to_directory(parameter):
 
     switcher={

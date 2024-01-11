@@ -1,5 +1,6 @@
 import json
 import copy
+from encrypt import encrypt_data
 #---------------------------------------------------------------------------------------
 def save_risk_factors(risk_factors_dict):
     #This is a json file containing standard clinical data in the OpenEHR standards form
@@ -13,6 +14,6 @@ def save_risk_factors(risk_factors_dict):
     for cvrf,value in risk_factors_dict.items():
         if(value):
             risk_factors.append(copy.deepcopy(json_object_risk_factors))
-            risk_factors[-1]["content"][0]["data"]["items"][1]["items"][0]["value"]["value"] = cvrf.upper()
+            risk_factors[-1]["content"][0]["data"]["items"][1]["items"][0]["value"]["value"] = encrypt_data(cvrf.upper())
     
     return(risk_factors)

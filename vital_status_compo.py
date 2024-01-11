@@ -1,4 +1,5 @@
 import json
+from encrypt import encrypt_data
 def vital_status(vital_status):
     #This is a json file containing standard clinical data in the OpenEHR standards form
     full_path_vital_status = 'vital_status_20231017124216_000001_1.json'
@@ -17,7 +18,7 @@ def vital_status(vital_status):
         status="Alive"
         code_string="at0005"
 
-    json_object_vital_status["content"][0]["data"]["events"][0]["data"]["items"][0]["value"]["value"]=status
-    json_object_vital_status["content"][0]["data"]["events"][0]["data"]["items"][0]["value"]["defining_code"]["code_string"]=code_string
+    json_object_vital_status["content"][0]["data"]["events"][0]["data"]["items"][0]["value"]["value"]= encrypt_data(status.upper())
+    json_object_vital_status["content"][0]["data"]["events"][0]["data"]["items"][0]["value"]["defining_code"]["code_string"]=encrypt_data(code_string)
 
     return(json_object_vital_status)
